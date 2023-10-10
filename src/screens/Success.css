@@ -1,0 +1,192 @@
+.card-container {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+  
+  .card-container header img {
+    max-width: 100px;
+    border-radius: 50%;
+  }
+  
+  .content-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .bold-text {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .normal-text {
+    font-size: 16px;
+    color: #333;
+    margin: 0;
+  }
+  
+  .social-container {
+    margin-top: 20px;
+  }
+  
+/* Success.css */
+
+.card {
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-img-top {
+ 
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card-body {
+  padding: 15px;
+  background-color: #f2f1f1;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 38px;
+}
+
+.card-price {
+  font-size: 1.2rem;
+}
+
+.btn-color {
+  background-color: #28a745;
+  border: none;
+  color: #fff;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.btn-color:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+  /* Success.css */
+
+/* Reset some default styles */
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+/* Apply the font and font size */
+body {
+  font-family: 'Poiret One', cursive;
+  font-size: 18px;
+}
+
+/* Create a wrapper for the content */
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  color: #fff;
+}
+
+/* Style the payments section */
+.payments {
+  width: 50%;
+  padding: 2%;
+  float: left;
+  border-right: 1px solid #fff;
+  background: #9D50BB;
+  background: -webkit-linear-gradient(to top, #6E48AA, #9D50BB);
+  background: linear-gradient(to top, #6E48AA, #9D50BB);
+}
+
+/* Style the payments form and refunds form */
+.payments-form, .refunds-form {
+  margin-top: 30%;
+}
+
+/* Style input fields */
+input {
+  text-align: center;
+  border-radius: 25px;
+  padding: 10px;
+  font-size: 90%;
+  font-family: inherit;
+}
+
+/* Style buttons */
+button {
+  border: 3px solid #fff;
+  color: #fff;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: none;
+  cursor: pointer;
+  padding: 15px 50px;
+  display: inline-block;
+  margin: 15px 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  outline: none;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  overflow: hidden;
+}
+
+/* Style button hover and active states */
+button::after {
+  width: 0%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #fff;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+button:hover, button:active {
+  color: #9D50BB;
+  background: #fff;
+}
+
+button:hover:after, button:active:after {
+  width: 100%;
+}
+
+/* Style payment and refund amount text */
+.pay_amount, .refund_amount {
+  font-size: 140%;
+}
+
+/* Style the refunds section */
+

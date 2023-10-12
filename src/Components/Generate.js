@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import QRCode from "react-qr-code";
+import html2canvas from 'html2canvas';
 import CryptoJS from "crypto-js";
 import {
   Button,
@@ -63,10 +64,39 @@ export default function Generate(tno) {
      setRno(localStorage.getItem("data"));
   }, );
 
+  const divToDownloadRef = useRef(null);
+
+  function downloadDiv() {
+    const element = divToDownloadRef.current;
+
+    html2canvas(element).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const link = document.createElement('a');
+      link.href = imgData;
+      link.download = "NavraasPass.png";
+      link.click();
+    });
+  }
+  
+  
+  
+  
+
   return (
-    <div>
+    <div ref={divToDownloadRef}>
+      <div style={{paddingBottom:"5px"}}>
       <center>
-        
+      <Typography
+                sx={{
+                  fontFamily: "Trebuchet MS",
+                  fontSize: 20,
+                  color: "black",
+                }}
+                variant="h5"
+                component="div"
+              >
+                Hey {tno.rno}!
+              </Typography>
         <Typography
           sx={{
             paddingTop:"10px",
@@ -77,7 +107,7 @@ export default function Generate(tno) {
           variant="h5"
           component="div"
         >
-          Please save your QR code! No QR? No entry!
+          Please download your E-Pass! No pass? No entry!
         </Typography>
         <Typography
           sx={{
@@ -109,15 +139,34 @@ export default function Generate(tno) {
         </Button>
         <br />
         <br />
-        <br />
+        
         {value && (
+          <div>
           <QRCode
             title="Entry Code"
             value={value}
             size={size === "" ? 0 : size}
           />
+          <Button
+          onClick={(e) => {
+            downloadDiv();
+          }}
+          sx={{
+            width: "240px",
+            color: "white",
+            fontWeight: "bold",
+            marginTop: "20px",
+            fontFamily: "Trebuchet MS",
+            backgroundColor: "green",
+          }}
+        >
+          DOWNLOAD E-PASS
+        </Button>
+          </div>
         )}
+       
       </center>
+    </div>
     </div>
   );
 }

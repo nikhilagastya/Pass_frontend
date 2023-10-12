@@ -42,6 +42,9 @@ export default function Success() {
   useEffect(()=>{
 
   },[])
+
+  
+  
   if(localStorage.getItem("data")==undefined){
     return(
       <div style={{ 
@@ -82,7 +85,7 @@ export default function Success() {
   }
 
   return (
-    <div>
+    <div id = "divToDownload">
       <div className="" style={{ display: "flex" }}>
         <div
           style={{
@@ -118,7 +121,7 @@ export default function Success() {
             }}
           >
             <div>
-              <Typography
+              {/* <Typography
                 sx={{
                   fontFamily: "Trebuchet MS",
                   fontSize: 20,
@@ -128,7 +131,7 @@ export default function Success() {
                 component="div"
               >
                 Hey {state.rno}!
-              </Typography>
+              </Typography> */}
               <Typography
                 sx={{
                   fontFamily: "Trebuchet MS",
@@ -150,10 +153,10 @@ export default function Success() {
           variant="h5"
           component="div"
         >
-        Save your unique QR code and use it at Navraas '23!
+        Download your e-pass and use it at Navraas '23!
         </Typography>
               <div className="card-container">
-                <Generate tno={state.transactionId} rno={state.rno} />
+                <Generate tno={state.transactionId} rno={state.rno}/>
               </div>
             </div>
           </div>

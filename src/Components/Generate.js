@@ -66,18 +66,19 @@ export default function Generate(tno) {
   return (
     <div>
       <center>
+        
         <Typography
           sx={{
+            paddingTop:"10px",
             fontFamily: "Trebuchet MS",
-            fontSize: 20,
+            fontSize: 17,
             color: "black",
           }}
           variant="h5"
           component="div"
         >
-        Get your unique QR Code below and use it at the event!
+          Please save your QR code! No QR? No entry!
         </Typography>
-        <br />
         <Typography
           sx={{
             fontFamily: "Trebuchet MS",
@@ -90,6 +91,7 @@ export default function Generate(tno) {
           Note: Each QR can be scanned only once. Any QR codes generated through
           fake transaction ID's will be denied entry.
         </Typography>
+        
         <Button
           onClick={(e) => {
             onConfirm();

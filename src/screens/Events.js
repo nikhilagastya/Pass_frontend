@@ -4,15 +4,30 @@ import "./Success.css";
 import Carousel from "../Components/Carousel";
 import TransactionForm from "./TransactionForm";
 import Cover2 from "../assets/Guidelines.png"
-
+import {
+  Button,
+  CardContent,
+  TextField,
+  Typography,
+} from "@mui/material";
 export default function Events() {
   if(localStorage.getItem("data")==undefined){
     return(
-      <div>
-        <h1 style = {{textAlign:'center', margin:300, color:'white', fontSize:50}}>
-          Unauthorized Access!
-        </h1>
-      </div>
+      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>
+  <Typography
+    sx={{
+      padding: "20px",
+      fontFamily: "Trebuchet MS",
+      fontSize: 40,
+      color: "white",
+    }}
+    variant="h5"
+    component="div"
+  >
+    You seem to be lost. 
+  </Typography>
+</div>
+
     )
   }
   return (

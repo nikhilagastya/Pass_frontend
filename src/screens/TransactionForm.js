@@ -7,7 +7,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import poster from "../assets/Poster.png"
+import poster from "../assets/Poster1.png"
 import { useNavigate } from "react-router-dom";
 
 const TransactionForm = () => {
@@ -67,6 +67,7 @@ const TransactionForm = () => {
     >
       <Typography
         sx={{
+          padding:"10px",
           fontFamily: "Trebuchet MS",
           fontSize: 20,
           color: "white",
@@ -94,6 +95,18 @@ const TransactionForm = () => {
             >
               Scan this QR & pay using your UPI app!
             </Typography>
+            <Typography
+        sx={{
+          padding:"10px",
+          fontFamily: "Trebuchet MS",
+          fontSize: 15,
+          color: "gray",
+        }}
+        variant="h5"
+        component="div"
+      >
+        Make sure you enter the correct transaction ID. Any invalid transaction ID's will be denied entry.
+      </Typography>
           </a>
           <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"></p>
           {/* <Payment cost={price}></Payment> */}

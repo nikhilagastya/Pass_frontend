@@ -11,9 +11,10 @@ import {
 } from "@mui/material";
 import Cover3 from "../assets/Navraas.gif"
 import Carousel from "../Components/Carousel";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Success() {
+  const navigate = useNavigate();
   const props = localStorage.getItem("data");
   const { state } = useLocation();
   const [data, setData] = useState();
@@ -41,6 +42,44 @@ export default function Success() {
   useEffect(()=>{
 
   },[])
+  if(localStorage.getItem("data")==undefined){
+    return(
+      <div style={{ 
+        display: "flex", 
+        flexDirection: "column", 
+        justifyContent: "center", 
+        alignItems: "center", 
+        height: "100vh" 
+      }}>
+        <Typography
+          sx={{
+            padding: "5px",
+            fontFamily: "Trebuchet MS",
+            fontSize: 40,
+            color: "white",
+          }}
+          variant="h5"
+          component="div"
+        >
+          You seem to be lost ^.^
+        </Typography>
+        <Typography
+          onClick={()=>{navigate("/")}}
+          sx={{
+            fontFamily: "Trebuchet MS",
+            fontSize: 15,
+            color: "gray",
+          }}
+          variant="h5"
+          component="div"
+        >
+          And thats okay! <a><u>Click me </u></a>to redirect!
+        </Typography>
+      </div>
+      
+
+    )
+  }
 
   return (
     <div>
@@ -101,6 +140,18 @@ export default function Success() {
               >
                 You've successfully registered for an e-pass for Navraas!
               </Typography>
+              <Typography
+          sx={{
+            paddingTop:"10px",
+            fontFamily: "Trebuchet MS",
+            fontSize: 15,
+            color: "gray",
+          }}
+          variant="h5"
+          component="div"
+        >
+        Save your unique QR code and use it at Navraas '23!
+        </Typography>
               <div className="card-container">
                 <Generate tno={state.transactionId} rno={state.rno} />
               </div>

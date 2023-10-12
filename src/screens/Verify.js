@@ -5,6 +5,8 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import React, { useEffect, useState } from "react";
 import { auth } from "../firebase";
 import Loader from "react-js-loader";
@@ -69,14 +71,18 @@ const Verify = () => {
             setFlag(true);
             setValid(false);
             setFetching(false);
-            window.alert("Enter a valid roll number")
+            toast.error("Enter a valid roll number", {
+              position: toast.POSITION.TOP_CENTER
+          });
             setid("");
           }
           else{
             setFlag(false);
             if(data.TransactionId.length!=4){
             setFetching(false);
-            window.alert("You've already registered for Navraas");
+            toast.success("You've already registered for KMIT Navraas", {
+              position: toast.POSITION.TOP_CENTER
+          });
             setid("");
             setBlock(true);
             setValid(false);
@@ -136,7 +142,9 @@ const Verify = () => {
     event.preventDefault();
 
     if (id.trim().length !== 10) {
-      alert("Enter a valid roll number");
+      toast.error("Enter a valid roll number", {
+        position: toast.POSITION.TOP_CENTER
+    });
     } else {
       try {
         const isValid = await checkAndValidate();
@@ -145,7 +153,7 @@ const Verify = () => {
           await navigate("/Events");
           localStorage.setItem("data", "" + id);
         } else {
-          window.alert("You entered a wrong password.");
+          toast.error("You entered a wrong password.");
         }
       } catch (error) {
         console.error("Error:", error);
@@ -259,9 +267,12 @@ const Verify = () => {
 
   if (!hasFilled) {
     if (isMobile) {
+      toast("Use a laptop/desktop.");
       return (
-        <div>
-          <h1>Use a laptop, dawg.</h1>
+        <div style = {{marginTop:100, textAlign:'center'}}>
+          <ToastContainer />
+
+          {/* <h1>Use a laptop, dawg.</h1> */}
         </div>
       );
     } else {
@@ -276,21 +287,26 @@ const Verify = () => {
               color: "white",
             }}
           >
+            <ToastContainer />
+
             <div >
-          <img src={Cover1} style={{width:"70%",marginLeft:'15%',marginTop:'5%'}}/>
+          <a href = "https://www.instagram.com/pr.kmit"><img src={Cover1} style={{width:"70%",marginLeft:'15%',marginTop:'5%'}}/></a>
 
         </div>
           </div>
           <div
             className="app__container "
-            style={{ backgroundColor: "black", width: "40%", height: "764px" }}
+            style={{ backgroundColor: "black", width:"40%",}}
           >
+            <div>
             <div>
               <img
                 src="Cover3.gif"
                 style={{
                   textAlign: "center",
                   objectFit: "cover",
+                  marginTop:"15%",
+                  marginBottom:"5%",
                   width: "100%",
                   height: "80%",
                   marginRight: "5%",
@@ -323,7 +339,7 @@ const Verify = () => {
                   variant="h5"
                   component="div"
                 >
-                  You're gonna need one of those e-passes to enter Navraas!
+                  You're gonna need an e-pass to enter <u ><a href = "https://www.instagram.com/kmitofficial" target="_blank">KMIT Navraas!</a></u>
                 </Typography>
 
                 <form style={{ color: "white" }}>
@@ -444,8 +460,35 @@ const Verify = () => {
                     Get your pass!
                   </Button>
                 </form>
+
               </CardContent>
             </Card>
+            <div style = {{textAlign:'center'}}>
+            <Typography
+                        sx={{
+                          paddingTop: "12px",
+                          fontFamily: "Trebuchet MS",
+                          fontSize: 13,
+                          color: "gray",
+                        }}
+                        variant="h5"
+                        component="div"
+                      >
+                        An initiative by the <a href = "https://www.instagram.com/pr.kmit" target = "_blank"><b><u>Public Relations Team</u></b></a>
+                      </Typography>
+                      <Typography
+                        sx={{
+                          fontFamily: "Trebuchet MS",
+                          fontSize: 13,
+                          color: "gray",
+                        }}
+                        variant="h5"
+                        component="div"
+                      >
+                        Developed by Nikhil Agastya, designed by Pranav Dhulipala
+                      </Typography>
+                      </div>
+          </div>
           </div>
           <div id="recaptcha"></div>
         </>
@@ -506,6 +549,7 @@ const Verify = () => {
           </Card>
         </div>
         <div id="recaptcha"></div>
+        
       </>
     );
   }
